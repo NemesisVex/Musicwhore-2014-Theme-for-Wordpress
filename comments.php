@@ -73,16 +73,16 @@ if ( post_password_required() ) {
 	<?php
 	$comment_args = array(
 		'fields' => apply_filters('comment_form_default_fields', array(
-			'author' => '<div class="comment-form-author form-group"><label for="author" class="col-md-2 control-label">' . __( 'Name', 'domainreference' ) . ' <span class="required">*</span></label> ' . ( $req ? '<div class="col-md-6">' : '' ) . '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></div></div>',
-			'email' => '<div class="comment-form-email form-group"><label for="email" class="col-md-2 control-label">' . __( 'Email', 'domainreference' ) . ' <span class="required">*</span></label> ' . ( $req ? '<div class="col-md-6">' : '' ) . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></div></div>',
-			'url' => '<div class="comment-form-url form-group"><label for="url" class="col-md-2 control-label">' . __( 'Website', 'domainreference' ) . '</label>' . '<div class="col-md-6"><input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></div></div>',
+			'author' => '<div class="comment-form-author form-group"><label for="author" class="col-md-2 control-label">' . __( 'Name', 'domainreference' ) . ' <span class="required">*</span></label> ' . ( $req ? '<div class="col-md-6">' : '' ) . '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" class="form-control" ' . $aria_req . ' /></div></div>',
+			'email' => '<div class="comment-form-email form-group"><label for="email" class="col-md-2 control-label">' . __( 'Email', 'domainreference' ) . ' <span class="required">*</span></label> ' . ( $req ? '<div class="col-md-6">' : '' ) . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" class="form-control" ' . $aria_req . ' /></div></div>',
+			'url' => '<div class="comment-form-url form-group"><label for="url" class="col-md-2 control-label">' . __( 'Website', 'domainreference' ) . '</label>' . '<div class="col-md-6"><input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" class="form-control" /></div></div>',
 		)),
 		'comment_field' => '<div class="comment-form-comment form-group"><label for="comment" class="col-sm-2 control-label">' . _x( 'Comment', 'noun' ) . '</label><div class="col-md-6"><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" class="form-control"></textarea></div></div>',
 		'comment_notes_after' => '<p class="form-allowed-tags help-block">' . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ), allowed_tags() ) . '</p>',
 		'class_form' => 'form-horizontal',
 		'class_submit' => 'btn btn-default',
 	);
-	comment_form($comment_args);
+	(function_exists( 'bootstrap_comment_form' ) === true ) ? bootstrap_comment_form($comment_args) : comment_form($comment_args);
 	?>
 
 </div><!-- #comments -->
