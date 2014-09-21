@@ -44,6 +44,8 @@ function musicwhore2014_paging_nav() {
 		'add_args' => array_map( 'urlencode', $query_args ),
 		'prev_text' => __( '&larr; Previous', 'musicwhore2014' ),
 		'next_text' => __( 'Next &rarr;', 'musicwhore2014' ),
+		'type' => 'list',
+		'list_class' => 'pagination',
 	);
 	$links = ( function_exists( 'bootstrap_paginate_links' ) === true ) ? bootstrap_paginate_links( $pagination_args ) : paginate_links( $pagination_args );
 
